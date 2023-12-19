@@ -22,6 +22,7 @@ async def handle_video_conversion(video_payload: VideoPayload):
     video_type = video_payload.video_type
 
     if not os.path.exists(video_url):
+
         raise HTTPException(
             status_code=400, detail="Video file does not exist"
         )

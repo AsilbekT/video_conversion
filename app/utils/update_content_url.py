@@ -16,13 +16,17 @@ def update_content_url(content_id: int, hls_path: str, url_type: str):
     if content:
         if url_type == "MOVIE":
             content.main_content_url = PLAYBACK_SERVICE + hls_path
+            content.is_ready = True
         elif url_type == "SERIES":
             content.series_summary_url = PLAYBACK_SERVICE + hls_path
+            content.is_ready = True
         elif url_type == "EPISODE":
             content.episode_content_url = PLAYBACK_SERVICE + hls_path
+            content.is_ready = True
         elif url_type in ["MOVIE_TRAILER", "SERIES_TRAILER"]:
-
             content.trailer_url = PLAYBACK_SERVICE + hls_path
+            content.has_trailer = True
+
         else:
             db.close()
             return None
